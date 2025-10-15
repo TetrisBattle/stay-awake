@@ -1,9 +1,18 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.1 12L18 6H14.3684L12 9.9L9.63158 6H6L9.9 12L6 18H9.63158L12 14.1L14.3684 18H18L14.1 12Z" fill="black" stroke="url(#paint0_linear_117_24)" stroke-width="0.8"/>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="240" height="240" transform="matrix(1 0 0 -1 0 240)" fill="black"/>
+<rect x="28" y="28" width="184" height="184" fill="black"/>
+<rect x="28" y="28" width="184" height="184" stroke="white" stroke-width="8"/>
+<rect x="50" y="44" width="140" height="20" fill="white"/>
+<rect x="110" y="196" width="152" height="20" transform="rotate(-90 110 196)" fill="white"/>
+<g clip-path="url(#clip0_3703_283)">
+<rect x="104" y="94" width="80" height="40" transform="rotate(43 104 94)" fill="black"/>
+<rect x="61" y="67" width="180" height="20" transform="rotate(43 61 67)" fill="white"/>
+<rect x="170" y="196" width="120" height="20" transform="rotate(-90 170 196)" fill="white"/>
+<rect x="50" y="196" width="120" height="20" transform="rotate(-90 50 196)" fill="white"/>
+</g>
 <defs>
-<linearGradient id="paint0_linear_117_24" x1="12" y1="6" x2="12" y2="18" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00FF00"/>
-<stop offset="1" stop-color="#00CCFF"/>
-</linearGradient>
+<clipPath id="clip0_3703_283">
+<rect width="140" height="120" fill="white" transform="translate(50 76)"/>
+</clipPath>
 </defs>
 </svg>
