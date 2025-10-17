@@ -1,5 +1,5 @@
 {
-  "name": "keep-alive",
+  "name": "stay-awake",
   "private": true,
   "version": "0.0.0",
   "description": "Prevent computer from going to sleep",
@@ -18,6 +18,10 @@
     "dist:mac": "npm run build && npm run transpile:electron && npm run build && electron-builder --mac --arm64"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

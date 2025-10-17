@@ -3,8 +3,8 @@ import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process'
 
 let psProcess: ChildProcessWithoutNullStreams | null = null
 
-export function registerKeepAliveHandler() {
-	ipcMain.handle('toggle-keepalive', (_event, enabled) => {
+export function registerStayAwakeHandler() {
+	ipcMain.handle('stayAwake', (_event, enabled) => {
 		if (enabled) {
 			psProcess = spawn('powershell', [
 				'-ExecutionPolicy',

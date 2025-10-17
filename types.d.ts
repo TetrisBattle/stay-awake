@@ -2,7 +2,6 @@
 
 interface Window {
 	electron: {
-		toggleKeepalive: (enabled: boolean) => Promise<void>
-		toggleLogger: (enabled: boolean) => void
+		toggleStayAwake: (enabled: boolean) => Promise<void>
 	}
 }

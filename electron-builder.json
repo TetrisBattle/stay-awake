@@ -1,6 +1,6 @@
 {
-	"appId": "com.thien.keepalive",
-	"productName": "Keep Alive",
+	"appId": "com.thien.stayawake",
+	"productName": "Stay Awake",
 	"icon": "./public/logo.ico",
 	"files": [
 		"dist-react/**/*",

@@ -2,7 +2,6 @@ const electron = require('electron')
 const { contextBridge, ipcRenderer } = electron
 
 contextBridge.exposeInMainWorld('electron', {
-	toggleKeepalive: (enabled) =>
-		ipcRenderer.invoke('toggle-keepalive', enabled),
-	toggleLogger: (enabled) => ipcRenderer.invoke('toggle-logger', enabled),
+	toggleStayAwake: (enabled) =>
+		ipcRenderer.invoke('stayAwake', enabled),
 } satisfies Window['electron'])

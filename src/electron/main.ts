@@ -1,14 +1,14 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 import path from 'node:path'
-import { registerKeepAliveHandler } from './ipc/keepAliveHandler.js'
-import { registerLoggerHandler } from './ipc/loggerHandler.js'
+import { registerStayAwakeHandler } from './ipc/stayAwakeHandler.js'
 import { isDev } from './util.js'
 import { getPreloadPath } from './pathResolver.js'
 
 function createWindow() {
 	const mainWindow = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 360,
+		height: 360,
+		resizable: false,
 		webPreferences: {
 			preload: getPreloadPath(),
 		},
@@ -23,7 +23,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+	Menu.setApplicationMenu(null)
 	createWindow()
-	registerKeepAliveHandler()
-	registerLoggerHandler()
+	registerStayAwakeHandler()
 })
