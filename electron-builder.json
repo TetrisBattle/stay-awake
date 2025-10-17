@@ -6,6 +6,7 @@
 		"dist-react/**/*",
 		"dist-electron/**/*"
 	],
+	"extraResources": ["dist-electron/preload.cjs"],
 	"win": {
 		"target": ["portable", "msi"]
 	},
