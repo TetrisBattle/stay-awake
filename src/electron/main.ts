@@ -1,6 +1,6 @@
 import { app, BrowserWindow, Menu } from 'electron'
 import path from 'node:path'
-import { registerStayAwakeHandler } from './ipc/stayAwakeHandler.js'
+import { stayAwake } from './ipc/stayAwake.js'
 import { isDev } from './util.js'
 import { getPreloadPath } from './pathResolver.js'
 
@@ -25,5 +25,6 @@ function createWindow() {
 app.whenReady().then(() => {
 	Menu.setApplicationMenu(null)
 	createWindow()
-	registerStayAwakeHandler()
+
+	stayAwake()
 })

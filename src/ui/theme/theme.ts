@@ -1,4 +1,4 @@
-import { createTheme, ThemeOptions } from '@mui/material'
+import { createTheme, type ThemeOptions } from '@mui/material'
 import { defaultTheme } from './defaultTheme'
 import { deepmerge } from '@mui/utils'
 

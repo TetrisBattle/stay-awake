@@ -5,3 +5,7 @@ interface Window {
 		toggleStayAwake: (enabled: boolean) => Promise<void>
 	}
 }
+
+type EventPayloadMapping = {
+	stayAwake: boolean
+}

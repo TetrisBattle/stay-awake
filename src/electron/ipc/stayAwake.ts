@@ -1,10 +1,10 @@
-import { ipcMain } from 'electron'
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process'
+import { ipcMainHandle } from '../util.js'
 
 let psProcess: ChildProcessWithoutNullStreams | null = null
 
-export function registerStayAwakeHandler() {
-	ipcMain.handle('stayAwake', (_event, enabled) => {
+export function stayAwake() {
+	ipcMainHandle('stayAwake', (enabled) => {
 		if (enabled) {
 			psProcess = spawn('powershell', [
 				'-ExecutionPolicy',
