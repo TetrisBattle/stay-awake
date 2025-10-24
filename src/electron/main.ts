@@ -1,8 +1,7 @@
 import { app, BrowserWindow, Menu } from 'electron'
-import path from 'node:path'
 import { stayAwake } from './ipc/stayAwake.js'
 import { isDev } from './util.js'
-import { getPreloadPath } from './pathResolver.js'
+import { getIndexPath, getPreloadPath } from './pathResolver.js'
 
 function createWindow() {
 	const mainWindow = new BrowserWindow({
@@ -19,7 +18,7 @@ function createWindow() {
 		return
 	}
 
-	mainWindow.loadFile(path.join(app.getAppPath(), '/dist-react/index.html'))
+	mainWindow.loadFile(getIndexPath())
 }
 
 app.whenReady().then(() => {
