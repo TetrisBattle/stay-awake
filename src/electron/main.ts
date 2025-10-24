@@ -8,7 +8,7 @@ function createWindow() {
 	const mainWindow = new BrowserWindow({
 		width: 360,
 		height: 360,
-		resizable: false,
+		resizable: isDev(),
 		webPreferences: {
 			preload: getPreloadPath(),
 		},
@@ -19,12 +19,11 @@ function createWindow() {
 		return
 	}
 
-	mainWindow.loadFile(path.join(app.getAppPath(), 'dist-react/index.html'))
+	mainWindow.loadFile(path.join(app.getAppPath(), '/dist-react/index.html'))
 }
 
 app.whenReady().then(() => {
-	Menu.setApplicationMenu(null)
+	if (!isDev()) Menu.setApplicationMenu(null)
 	createWindow()
-
 	stayAwake()
 })
