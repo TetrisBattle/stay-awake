@@ -3,7 +3,7 @@ import { ipcMainHandle } from '../util.js'
 
 let psProcess: ChildProcessWithoutNullStreams | null = null
 
-export function stayAwake() {
+export function stayAwakeHandler() {
 	ipcMainHandle('stayAwake', (enabled) => {
 		if (enabled) {
 			psProcess = spawn('powershell', [

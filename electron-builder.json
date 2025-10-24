@@ -1,12 +1,12 @@
 {
 	"appId": "com.thien.stayawake",
 	"productName": "Stay Awake",
-	"icon": "./public/logo.ico",
+	"icon": "src/assets/logo.ico",
 	"files": [
 		"dist-react/**/*",
 		"dist-electron/**/*"
 	],
-	"extraResources": ["dist-electron/preload.cjs"],
+	"extraResources": ["dist-electron/preload.cjs", "src/assets/**"],
 	"win": {
 		"target": ["portable", "msi"]
 	},

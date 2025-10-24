@@ -11,14 +11,14 @@
 	"scripts": {
 		"dev": "npm-run-all --parallel dev:react dev:electron",
 		"dev:react": "vite",
-		"dev:electron": "npm run transpile:electron && cross-env NODE_ENV=development electron .",
+		"dev:electron": "npm run build:electron && cross-env NODE_ENV=development electron .",
 		"build": "tsc -b && vite build",
+		"build:electron": "tsc -p src/electron/tsconfig.json",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"transpile:electron": "tsc -p src/electron/tsconfig.json",
-		"dist": "npm run build && npm run transpile:electron && npm run build && electron-builder --win --x64",
-		"dist:linux": "npm run build && npm run transpile:electron && npm run build && electron-builder --linux --x64",
-		"dist:mac": "npm run build && npm run transpile:electron && npm run build && electron-builder --mac --arm64"
+		"dist": "npm run build && npm run build:electron && electron-builder --win --x64",
+		"dist:linux": "npm run build && npm run build:electron && electron-builder --linux --x64",
+		"dist:mac": "npm run build && npm run build:electron && electron-builder --mac --arm64"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.14.0",

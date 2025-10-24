@@ -1,39 +1,57 @@
 import { app, BrowserWindow, globalShortcut, Menu } from 'electron'
-import { stayAwake, stopStayAwake } from './ipc/stayAwake.js'
+import { stayAwakeHandler, stopStayAwake } from './ipc/stayAwake.js'
 import { enableDevTools, isDev } from './util.js'
-import { getIndexPath, getPreloadPath } from './pathResolver.js'
+import { getUIPath, getPreloadPath, getIconPath } from './pathResolver.js'
+import { createTray } from './tray.js'
 
-function createWindow() {
+function createWindow(): BrowserWindow {
 	const mainWindow = new BrowserWindow({
 		width: 360,
 		height: 360,
+		icon: getIconPath(),
 		resizable: isDev(),
 		webPreferences: {
 			preload: getPreloadPath(),
 		},
 	})
 
-	if (isDev()) {
-		mainWindow.loadURL('http://localhost:5555')
-		return
-	}
+	if (isDev()) mainWindow.loadURL('http://localhost:5555')
+	else mainWindow.loadFile(getUIPath())
 
-	mainWindow.loadFile(getIndexPath())
+	return mainWindow
 }
 
 app.whenReady().then(() => {
 	Menu.setApplicationMenu(null)
 	enableDevTools()
-	createWindow()
-	stayAwake()
+	const mainWindow = createWindow()
+	createTray(mainWindow)
+	handleCloseEvents(mainWindow)
+
+	stayAwakeHandler()
 })
 
-const cleanup = () => {
+process.on('exit', () => {
 	if (isDev()) globalShortcut.unregisterAll()
 	stopStayAwake()
-}
+})
 
-app.on('before-quit', cleanup)
-app.on('will-quit', cleanup)
-app.on('window-all-closed', cleanup)
-process.on('exit', cleanup)
+function handleCloseEvents(mainWindow: BrowserWindow) {
+	let willClose = false
+
+	mainWindow.on('close', (event) => {
+		if (willClose) return
+
+		event.preventDefault()
+		mainWindow.hide()
+		if (app.dock) app.dock.hide()
+	})
+
+	app.on('before-quit', () => {
+		willClose = true
+	})
+
+	mainWindow.on('show', () => {
+		willClose = false
+	})
+}

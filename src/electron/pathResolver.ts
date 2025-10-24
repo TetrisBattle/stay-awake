@@ -7,15 +7,17 @@ function getBasePath(): string {
 }
 
 export function getPreloadPath(): string {
-	return path.join(
-		getBasePath(),
-		'/dist-electron/preload.cjs',
-	)
+	return path.join(getBasePath(), '/dist-electron/preload.cjs')
 }
 
-export function getIndexPath(): string {
-	return path.join(
-		getBasePath(),
-		'/dist-react/index.html',
-	)
+export function getUIPath(): string {
+	return path.join(getBasePath(), '/dist-react/index.html')
+}
+
+function getAssetsPath(): string {
+	return path.join(getBasePath(), '/src/assets')
+}
+
+export function getIconPath(): string {
+	return path.join(getAssetsPath(), 'logo.ico')
 }
