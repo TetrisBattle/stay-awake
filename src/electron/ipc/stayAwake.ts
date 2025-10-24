@@ -27,3 +27,10 @@ export function stayAwake() {
 		}
 	})
 }
+
+export function stopStayAwake() {
+	if (psProcess) {
+		psProcess.kill()
+		psProcess = null
+	}
+}

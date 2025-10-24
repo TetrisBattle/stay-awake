@@ -1,7 +1,16 @@
-import { ipcMain } from 'electron'
+import { BrowserWindow, globalShortcut, ipcMain } from 'electron'
 
 export function isDev(): boolean {
 	return process.env.NODE_ENV === 'development'
+}
+
+export function enableDevTools() {
+	if (isDev()) {
+		globalShortcut.register('CommandOrControl+Shift+I', () => {
+			const focusedWin = BrowserWindow.getFocusedWindow();
+			if (focusedWin) focusedWin.webContents.toggleDevTools();
+		});
+	}
 }
 
 export function ipcMainHandle<Key extends keyof EventPayloadMapping>(
